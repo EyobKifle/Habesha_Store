@@ -399,6 +399,7 @@ footer {
     font-size: 1.5em;
     cursor: pointer;
     padding: 10px;
+    z-index: 1100;
 }
 
 .mobile-nav {
@@ -413,10 +414,12 @@ footer {
     transition: left 0.3s ease;
     padding: 20px;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
 }
 
 .mobile-nav.active {
     left: 0;
+    display: block;
 }
 
 .mobile-nav a {
@@ -441,6 +444,10 @@ footer {
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
     z-index: 999;
+}
+
+.mobile-nav-overlay.active {
+    display: block;
 }
 
 /* Responsive Grid System */

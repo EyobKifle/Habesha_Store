@@ -13,6 +13,9 @@
 <body>
     <div class="header">
         <h1>Habesha Store</h1>
+        <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+            <i class="fas fa-bars"></i>
+        </button>
         <div class="header-icons">
             <a href="#cart" class="icon-link" title="Shopping Cart">
                 <i class="fas fa-shopping-cart" style="font-size: 1em;"></i>
@@ -23,7 +26,7 @@
             </a>
         </div>
     </div>
-    <div class="nav">
+    <nav class="nav">
         <a href="#electronics">Electronics</a>
         <a href="#furniture">Furniture</a>
         <a href="#cosmetics">Cosmetics</a>
@@ -32,7 +35,18 @@
         <a href="#ethiopian-crafts">Ethiopian Crafts</a>
         <a href="#deals">Deals</a>
         <a href="#contact">Contact</a>
-    </div>
+    </nav>
+    <nav class="mobile-nav" aria-label="Mobile navigation menu">
+        <a href="#electronics">Electronics</a>
+        <a href="#furniture">Furniture</a>
+        <a href="#cosmetics">Cosmetics</a>
+        <a href="#clothing">Clothing</a>
+        <a href="#home-decor">Home Decor</a>
+        <a href="#ethiopian-crafts">Ethiopian Crafts</a>
+        <a href="#deals">Deals</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <div class="mobile-nav-overlay"></div>
     <div class="search-bar">
         <input type="text" placeholder="Search for products, categories, brands...">
         <button>Search</button>
@@ -211,6 +225,37 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const mobileNav = document.querySelector('.mobile-nav');
+        const mobileNavOverlay = document.querySelector('.mobile-nav-overlay');
+
+        function closeMobileMenu() {
+            mobileNav.classList.remove('active');
+            mobileNavOverlay.classList.remove('active');
+        }
+
+        mobileMenuToggle.addEventListener('click', () => {
+            const isActive = mobileNav.classList.contains('active');
+            if (isActive) {
+                closeMobileMenu();
+            } else {
+                mobileNav.classList.add('active');
+                mobileNavOverlay.classList.add('active');
+            }
+        });
+
+        mobileNavOverlay.addEventListener('click', () => {
+            closeMobileMenu();
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                closeMobileMenu();
             });
         });
     </script>
