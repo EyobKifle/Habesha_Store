@@ -1,0 +1,153 @@
+/* --- Login/Signup Page Styles --- */
+
+/* Style the body to center the form */
+.auth-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #ecf0f1, #bdc3c7);
+}
+
+/* The main white container for the forms */
+.auth-container {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(44, 62, 80, 0.15);
+    max-width: 450px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Back to home link at the top */
+.back-to-home {
+    display: inline-block;
+    margin-bottom: 25px;
+    color: #bdc3c7;
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: color 0.3s ease;
+}
+
+.back-to-home i {
+    margin-right: 5px;
+}
+
+.back-to-home:hover {
+    color: #1abc9c;
+}
+
+/* Tab switcher styles */
+.auth-tabs {
+    display: flex;
+    margin-bottom: 30px;
+    background: #ecf0f1;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.auth-tabs button {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    background: transparent;
+    color: #2c3e50;
+    font-size: 1em;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.auth-tabs button.active {
+    background: #1abc9c;
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(22, 160, 133, 0.3);
+}
+
+/* Form headers and intro text */
+#login-form h2, #signup-form h2 {
+    font-family: 'Playfair Display', serif;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.form-intro {
+    color: #7f8c8d;
+    margin-bottom: 30px;
+}
+
+/* Input container for label + input */
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 0.9em;
+    color: #2c3e50;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    font-size: 1em;
+    font-family: 'Montserrat', sans-serif;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #1abc9c;
+    box-shadow: 0 0 0 3px rgba(22, 160, 133, 0.2);
+}
+
+/* Style the main submit buttons */
+.auth-container .cta-button {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1em;
+    margin-top: 10px;
+}
+
+/* "Forgot Password" link */
+.forgot-password {
+    display: block;
+    text-align: right;
+    font-size: 0.9em;
+    margin-bottom: 20px;
+    color: #1abc9c;
+    text-decoration: none;
+}
+
+/* "Terms of Service" checkbox styling */
+.terms {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+    font-size: 0.9em;
+}
+
+.terms label {
+    margin-left: 10px;
+    color: #7f8c8d;
+}
+
+.terms input[type="checkbox"] {
+    accent-color: #1abc9c;
+    width: 16px;
+    height: 16px;
+}
+
+.terms a {
+    color: #1abc9c;
+    text-decoration: none;
+    font-weight: bold;
+}
