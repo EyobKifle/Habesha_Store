@@ -23,49 +23,58 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
 }
 
+/* Add padding to body to prevent content overlap */
+body {
+    padding-top: 100px; /* Adjust based on header height */
+}
+
+/* Responsive header elements */
 .header h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
     color: #ffffff;
     font-weight: 700;
     letter-spacing: 1px;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
     margin-right: auto;
+    transition: font-size 0.3s ease;
 }
 
 .header-icons {
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: clamp(15px, 3vw, 30px);
+    transition: gap 0.3s ease;
 }
 
 .header-icons .icon-link {
-    color: #bdc3c7; /* -- Light Text/Border Color -- */
-    font-size: 1.7em;
-    transition: color 0.3s ease, transform 0.2s ease;
-}
-
-.header-icons .icon-link:hover {
-    color: #ffffff; /* White on hover */
-    transform: scale(1.1);
+    color: #bdc3c7;
+    font-size: clamp(1.2em, 3vw, 1.7em);
+    transition: all 0.3s ease;
 }
 
 .header-icons .auth-button {
-    background: #1abc9c; /* -- Accent Color -- */
-    padding: 10px 20px;
+    background: #1abc9c;
+    padding: clamp(8px, 2vw, 10px) clamp(12px, 2vw, 20px);
     border: none;
     border-radius: 5px;
-    color: #ffffff; /* White text */
+    color: #ffffff;
     font-weight: bold;
     cursor: pointer;
     text-decoration: none;
-    font-size: 1em;
-    transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    font-size: clamp(0.8em, 2vw, 1em);
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: clamp(4px, 1vw, 8px);
 }
 
 .header-icons .auth-button:hover {
@@ -86,6 +95,7 @@ body {
     padding: 15px 0;
     flex-wrap: wrap;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 80px; /* Account for fixed header */
 }
 
 .nav a {
@@ -507,41 +517,66 @@ footer {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        padding: 15px 20px;
+        padding: 10px 20px;
     }
     
     .header h1 {
         margin-right: 0;
         margin-bottom: 0;
-        font-size: clamp(1.5rem, 4vw, 2rem);
+        font-size: 20px;
+        text-align: center;
+        flex: 1;
     }
     
     .header-icons {
-        gap: 15px;
+        gap: 10px;
+        flex-shrink: 0;
     }
     
     .header-icons .auth-button {
-        padding: 8px 12px;
-        font-size: 0.85em;
+        padding: 6px 12px;
+        font-size: 18px;
     }
     
     .hero {
-        padding: 60px 20px;
-        margin: 0 10px 30px 10px;
+        padding: 30px 15px;
+        margin: 0 5px 30px 5px;
+        text-align: center;
+    }
+    
+    .hero h2 {
+        font-size: 19px;
+        line-height: 1.3;
+        margin-bottom: 15px;
+    }
+    
+    .hero p {
+        font-size: 1.1rem;
+        max-width: 100%;
+        margin-bottom: 25px;
+        color: #34495e;
     }
     
     .search-bar {
         margin: 20px 10px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
     }
     
     .search-bar input {
         width: 100%;
         max-width: none;
+        margin-bottom: 0;
+        font-size: 1.1em;
+        padding: 14px;
     }
     
     .search-bar button {
         width: 100%;
-        margin-top: 10px;
+        margin-top: 0;
+        padding: 14px;
+        font-size: 1.1em;
     }
     
     .category-section {
@@ -550,25 +585,55 @@ footer {
     }
     
     .category-section h3 {
-        font-size: clamp(1.5rem, 4vw, 2.2rem);
+        font-size: clamp(1.6rem, 5vw, 2.4rem);
+        text-align: left;
+        margin-left: 5px;
+        margin-bottom: 20px;
+        color: #2c3e50;
     }
     
     .scroll-container {
         grid-template-columns: 1fr;
-        gap: 15px;
+        gap: 20px;
     }
     
     .card {
-        padding: 15px;
+        padding: 18px;
+        text-align: left;
+        border-radius: 15px;
     }
     
     .card img {
-        max-height: 200px;
+        max-height: 180px;
+        border-radius: 15px;
+    }
+    
+    .card p {
+        font-size: 1.1em;
+        margin: 10px 0 6px 0;
+        color: #2c3e50;
+    }
+    
+    .card .price {
+        font-size: 1.2em;
+        font-weight: 700;
+        margin-top: 6px;
+        color: #16a085;
+    }
+    
+    .card button {
+        width: 100%;
+        padding: 14px;
+        font-size: 1.1em;
+        border-radius: 10px;
     }
     
     .more-button {
         width: 100%;
-        max-width: 300px;
+        max-width: 320px;
+        padding: 16px;
+        font-size: 1.2em;
+        border-radius: 10px;
     }
 }
 
@@ -578,11 +643,11 @@ footer {
     }
     
     .header h1 {
-        font-size: 1.5rem;
+        font-size: 1rem;
     }
     
     .header-icons {
-        gap: 10px;
+        gap: 5px;
     }
     
     .header-icons .icon-link {
@@ -686,4 +751,5 @@ footer {
         font-size: 1rem;
         margin-bottom: 20px;
     }
+    
 }
