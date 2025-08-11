@@ -725,7 +725,7 @@ footer {
 
 @media (max-width: 480px) {
     .category-section .scroll-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
         gap: 10px;
     }
         .category-section .card {
@@ -748,6 +748,7 @@ footer {
         padding: 8px 6px;
         font-size: 0.85em;
     }
+    
 }
 
 @media (max-width: 360px) {
@@ -783,6 +784,7 @@ footer {
     .card .price {
         font-size: 0.9em;
     }
+    
     
 
 @media (max-width: 576px) {
