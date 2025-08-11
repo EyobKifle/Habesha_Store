@@ -1,3 +1,19 @@
+/* ------------------- */
+/* 1. Global Styles   */
+/* ------------------- */
+:root {
+    --bg-light: #ecf0f1;
+    --text-primary: #2c3e50;
+    --bg-dark: #2c3e50;
+    --bg-white: #ffffff;
+    --accent-primary: #1abc9c;
+    --accent-hover: #16a085;
+    --border-color: #bdc3c7;
+    --text-light: #bdc3c7;
+    --danger-color: #e74c3c;
+    --header-height: 70px;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,19 +22,29 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background: #ecf0f1; /* -- Light Background -- */
-    color: #2c3e50; /* -- Primary Text Color -- */
+    background: var(--bg-light);
+    color: var(--text-primary);
     line-height: 1.6;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    padding-top: var(--header-height);
 }
 
-/* Header */
+main {
+    width: 100%;
+    overflow: hidden;
+}
+
+a {
+    color: var(--accent-primary);
+    text-decoration: none;
+}
+
+/* ------------------- */
+/* 2. Header          */
+/* ------------------- */
 .header {
-    background: #2c3e50; /* -- Dark Element Background -- */
-    padding: 15px 30px;
-    border-bottom: 3px solid #1abc9c; /* -- Accent Color -- */
+    background: var(--bg-dark);
+    padding: 0 25px;
+    border-bottom: 3px solid var(--accent-primary);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-between;
@@ -28,191 +54,184 @@ body {
     left: 0;
     right: 0;
     z-index: 1000;
-    transition: all 0.3s ease;
-    height: 73px;
+    height: var(--header-height);
 }
 
-/* Add padding to body to prevent content overlap */
-body {
-    padding-top: 60px; /* Adjust based on header height */
-}
-
-/* Responsive header elements */
-.header h1 {
+.header-title {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
-    color: #ffffff;
-    font-weight: 700;
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    color: var(--bg-white);
     letter-spacing: 1px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-    margin-right: auto;
-    transition: font-size 0.3s ease;
 }
 
 .header-icons {
     display: flex;
     align-items: center;
-    gap: clamp(15px, 3vw, 30px);
-    transition: gap 0.3s ease;
+    gap: 20px;
 }
 
 .header-icons .icon-link {
-    color: #bdc3c7;
-    font-size: clamp(1.2em, 3vw, 1.7em);
-    transition: all 0.3s ease;
+    color: var(--text-light);
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
 }
 
-.header-icons .auth-button {
-    background: #1abc9c;
-    padding: clamp(8px, 2vw, 10px) clamp(12px, 2vw, 20px);
-    border: none;
+.header-icons .icon-link:hover {
+    color: var(--accent-primary);
+}
+
+.auth-button {
+    background: var(--accent-primary);
+    padding: 8px 18px;
     border-radius: 5px;
-    color: #ffffff;
+    color: var(--bg-white);
     font-weight: bold;
     cursor: pointer;
-    text-decoration: none;
-    font-size: clamp(0.8em, 2vw, 1em);
-    transition: all 0.3s ease;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
     display: flex;
     align-items: center;
-    gap: clamp(4px, 1vw, 8px);
+    gap: 8px;
 }
 
-.header-icons .auth-button:hover {
-    background: #16a085; /* -- Accent Hover Color -- */
-    color: #fff;
+.auth-button:hover {
+    background: var(--accent-hover);
     transform: translateY(-2px);
 }
 
-.header-icons .auth-button i {
-    font-size: 1.2em;
+.auth-button i {
+    font-size: 1.1em;
 }
 
-/* Navigation */
+/* ------------------- */
+/* 3. Navigation      */
+/* ------------------- */
 .nav {
     display: flex;
     justify-content: center;
-    background: #ffffff; /* -- White Section Background -- */
-    padding: 10px 0;
+    background: var(--bg-white);
+    padding: 15px 0;
     flex-wrap: wrap;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-top: 10px; /* Account for fixed header */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
 }
 
 .nav a {
-    color: #2c3e50; /* -- Primary Text Color -- */
-    text-decoration: none;
-    margin: 0 25px;
+    color: var(--text-primary);
+    margin: 5px 20px;
     font-weight: bold;
-    transition: all 0.3s ease;
-    font-size: 1.15em;
+    transition: color 0.3s ease;
+    font-size: 1.1rem;
     padding: 5px 0;
 }
 
 .nav a:hover {
-    color: #1abc9c; /* -- Accent Color on Hover -- */
-    transform: translateY(-2px);
+    color: var(--accent-primary);
 }
 
-/* Search Bar */
+/* ------------------- */
+/* 4. Search Bar      */
+/* ------------------- */
 .search-bar {
     display: flex;
     justify-content: center;
-    margin: 10px 20px;
+    margin: 25px auto;
     gap: 10px;
+    padding: 0 20px;
+    max-width: 900px;
 }
 
 .search-bar input {
     padding: 14px;
-    width: 70%;
-    max-width: 1000px;
-    border: 1px solid #bdc3c7; /* -- Border Color -- */
+    width: 100%;
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     font-size: 1.1em;
-    background: #ffffff;
-    color: #2c3e50; /* -- Primary Text Color -- */
+    background: var(--bg-white);
     outline: none;
     transition: border-color 0.3s;
 }
 
 .search-bar input:focus {
-    border-color: #1abc9c; /* -- Accent Color on Focus -- */
+    border-color: var(--accent-primary);
 }
 
 .search-bar button {
     padding: 14px 25px;
-    background: #1abc9c; /* -- Accent Color -- */
+    background: var(--accent-primary);
     border: none;
     color: #fff;
     cursor: pointer;
     border-radius: 8px;
     font-size: 1.1em;
     font-weight: bold;
-    transition: background 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .search-bar button:hover {
-    background: #16a085; /* -- Accent Hover Color -- */
+    background: var(--accent-hover);
     transform: translateY(-2px);
 }
 
-/* Discount Hero Section */
+/* -------------------------- */
+/* 5. Discount Hero Section  */
+/* -------------------------- */
 .discount-hero {
     text-align: center;
-    padding: 20px 10px;
+    padding: 40px 20px;
     background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-    margin: 0 10px 30px 20px;
-    border-radius: 0;
+    margin: 20px;
+    border-radius: 15px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .discount-hero h2 {
     font-family: 'Playfair Display', serif;
-    font-size: 2.2em;
+    font-size: clamp(2rem, 5vw, 2.8rem);
     margin-bottom: 15px;
-    color: #ffffff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    color: var(--bg-white);
 }
 
 .discount-hero p {
-    font-size: 1.2em;
-    margin-bottom: 40px;
-    max-width: 1000px;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    margin-bottom: 30px;
+    max-width: 800px;
     margin-left: auto;
     margin-right: auto;
-    color: #ecf0f1;
+    color: var(--bg-light);
 }
 
 .discount-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
+    gap: 25px;
     max-width: 1300px;
     margin: 0 auto;
 }
 
 .discount-card {
-    background: #ffffff;
+    background: var(--bg-white);
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .discount-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .discount-badge {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #e74c3c;
-    color: #ffffff;
-    padding: 8px 12px;
+    top: 15px;
+    right: 15px;
+    background: var(--danger-color);
+    color: var(--bg-white);
+    padding: 6px 12px;
     border-radius: 20px;
     font-weight: bold;
     font-size: 0.9em;
@@ -221,7 +240,7 @@ body {
 
 .discount-card img {
     width: 100%;
-    height: 150px;
+    height: 180px;
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 15px;
@@ -230,7 +249,6 @@ body {
 .discount-card h3 {
     font-size: 1.3em;
     margin-bottom: 10px;
-    color: #2c3e50;
     font-weight: bold;
 }
 
@@ -241,12 +259,12 @@ body {
 .original-price {
     text-decoration: line-through;
     color: #7f8c8d;
-    font-size: 1.1em;
+    font-size: 1em;
     margin-right: 10px;
 }
 
 .discount-price {
-    color: #e74c3c;
+    color: var(--danger-color);
     font-size: 1.4em;
     font-weight: bold;
 }
@@ -259,74 +277,46 @@ body {
 }
 
 .timer-display {
-    color: #2c3e50;
+    color: var(--text-primary);
     font-weight: bold;
-    font-size: 0.9em;
+    font-size: 1em;
+    letter-spacing: 0.5px;
 }
 
 .shop-now-btn {
     width: 100%;
     padding: 12px;
-    background: #1abc9c;
-    color: #ffffff;
+    background: var(--accent-primary);
+    color: var(--bg-white);
     border: none;
     border-radius: 8px;
     font-weight: bold;
     cursor: pointer;
     transition: background 0.3s ease;
     font-size: 1.1em;
+    margin-top: auto; /* Pushes button to the bottom */
 }
 
 .shop-now-btn:hover {
-    background: #16a085;
+    background: var(--accent-hover);
 }
 
-/* Promotional Banner */
-.promo-banner {
-    background: #2c3e50; /* -- Dark Element Background -- */
-    color: #ffffff;
-    padding: 20px;
-    text-align: center;
-    border-radius: 8px;
-    margin: 20px;
-}
-
-.promo-banner h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2em;
-    margin-bottom: 10px;
-}
-
-.promo-banner button {
-    background: #1abc9c; /* -- Accent Color -- */
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.promo-banner button:hover {
-    background: #16a085; /* -- Accent Hover Color -- */
-    transform: translateY(-2px);
-}
-
-/* Category Section */
+/* ------------------------ */
+/* 6. Category Sections    */
+/* ------------------------ */
 .category-section {
     max-width: 1200px;
     margin: 40px auto;
     padding: 20px;
-    background: #ffffff; /* -- White Section Background -- */
+    background: var(--bg-white);
     border-radius: 15px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
 }
 
 .category-section h3 {
     font-family: 'Playfair Display', serif;
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    color: #2c3e50; /* -- Primary Text Color -- */
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    margin-bottom: 25px;
     text-align: center;
 }
 
@@ -344,32 +334,27 @@ body {
 }
 
 .scroll-container::-webkit-scrollbar-thumb {
-    background: #1abc9c; /* -- Accent Color -- */
+    background: var(--accent-primary);
     border-radius: 4px;
 }
 
 .scroll-container::-webkit-scrollbar-track {
-    background: #bdc3c7; /* -- Border Color -- */
+    background: var(--border-color);
     border-radius: 4px;
 }
 
 /* Card Styles */
 .card {
     min-width: 250px;
-    height: auto;
-    background: #ffffff; /* -- White Section Background -- */
+    background: var(--bg-white);
     border-radius: 12px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    color: #2c3e50; /* -- Primary Text Color -- */
     text-align: center;
-    padding: 15px;
-    border: 1px solid #ecf0f1; /* Subtle border */
+    padding: 20px;
+    border: 1px solid #ecf0f1;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    position: relative; /* For sale tag positioning */
 }
 
 .card:hover {
@@ -377,118 +362,90 @@ body {
     box-shadow: 0 8px 16px rgba(44, 62, 80, 0.1);
 }
 
-.card.alt {
-    background: #2c3e50; /* -- Dark Element Background -- */
-    color: #ffffff;
-}
-
-.card.alt p, .card.alt .price {
-    color: #ffffff;
-}
-
-.card.alt button {
-    background: #1abc9c; /* -- Accent Color -- */
-    color: #ffffff;
-    border: none;
-}
-
-.card.alt button:hover {
-    background: #16a085; /* -- Accent Hover Color -- */
-    color: #ffffff;
-}
-
 .card img {
     width: 100%;
-    max-height: 200px;
-    object-fit: fit;
-    aspect-ratio: 1 / 1;
-    object-position: center;
+    height: 200px;
+    object-fit: cover;
     border-radius: 8px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .card p {
-    margin: 10px 0 5px 0;
     font-weight: bold;
     font-size: 1.1em;
-    color: #2c3e50; /* -- Primary Text Color -- */
+    margin: 10px 0 5px 0;
 }
 
 .card .price {
     font-size: 1.2em;
-    color: #2c3e50; /* -- Primary Text Color -- */
     font-weight: 700;
     margin-top: 5px;
+    color: var(--accent-hover);
 }
 
 .card button {
-    background: #2c3e50; /* -- Dark Element Background -- */
-    color: #ffffff;
+    background: var(--bg-dark);
+    color: var(--bg-white);
     border: none;
-    padding: 8px 15px;
+    padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
-    margin-top: 10px;
+    margin-top: auto;
     transition: background 0.3s, color 0.3s;
 }
 
 .card button:hover {
-    background: #1abc9c; /* -- Accent Color -- */
-    color: #fff;
-}
-
-/* Sale Tag */
-.sale-tag {
-    background: #e74c3c; /* A vibrant red for sales */
-    color: #ffffff;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 0.9em;
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    background: var(--accent-primary);
 }
 
 .more-button {
     display: block;
     margin: 30px auto 10px auto;
-    background: #1abc9c; /* -- Accent Color -- */
-    padding: 12px 25px;
+    background: var(--accent-primary);
+    padding: 12px 30px;
     border: none;
     border-radius: 8px;
-    color: #ffffff;
+    color: var(--bg-white);
     font-weight: bold;
     cursor: pointer;
     font-size: 1.1em;
-    transition: background 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .more-button:hover {
-    background: #16a085; /* -- Accent Hover Color -- */
+    background: var(--accent-hover);
     transform: translateY(-2px);
 }
 
-/* Footer */
+/* ------------------- */
+/* 7. Footer          */
+/* ------------------- */
 footer {
     text-align: center;
-    padding: 20px;
-    background: #2c3e50; /* -- Dark Element Background -- */
+    padding: 25px;
+    background: var(--bg-dark);
     margin-top: auto;
-    border-top: 2px solid #1abc9c; /* -- Accent Color -- */
-    color: #bdc3c7; /* -- Light Text/Border Color -- */
+    border-top: 3px solid var(--accent-primary);
+    color: var(--text-light);
     font-size: 0.9em;
 }
 
-/* Mobile Menu Styles */
+footer p {
+    margin: 5px 0;
+}
+
+
+/* --------------------------------- */
+/* 8. Mobile Navigation & Responsive */
+/* --------------------------------- */
 .mobile-menu-toggle {
     display: none;
     background: none;
     border: none;
     color: #ffffff;
-    font-size: 1.5em;
+    font-size: 1.8rem;
     cursor: pointer;
-    padding: 10px;
     z-index: 1100;
 }
 
@@ -496,33 +453,20 @@ footer {
     display: none;
     position: fixed;
     top: 0;
-    left: -100%;
+    right: -100%;
     width: 80%;
+    max-width: 320px;
     height: 100vh;
-    background: #2c3e50;
-    z-index: 1000;
-    transition: left 0.3s ease;
-    padding: 20px;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
-    overflow-y: auto;
+    background: var(--bg-dark);
+    z-index: 1050;
+    transition: right 0.35s ease-in-out;
+    padding: 25px;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+    flex-direction: column;
 }
 
 .mobile-nav.active {
-    left: 0;
-    display: block;
-}
-
-.mobile-nav a {
-    display: block;
-    color: #ffffff;
-    padding: 15px 0;
-    border-bottom: 1px solid #34495e;
-    text-decoration: none;
-    font-size: 1.1em;
-}
-
-.mobile-nav a:last-child {
-    border-bottom: none;
+    right: 0;
 }
 
 .mobile-nav-overlay {
@@ -533,373 +477,131 @@ footer {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
+    z-index: 1040;
 }
 
 .mobile-nav-overlay.active {
     display: block;
 }
 
-/* Responsive Grid System */
-@media (max-width: 1200px) {
-    .category-section {
-        margin: 30px 15px;
-        padding: 20px;
-    }
-    
-    .scroll-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-        overflow-x: visible;
-        padding-bottom: 0;
-    }
-    
-    .card {
-        min-width: auto;
-    }
+.mobile-nav a {
+    display: block;
+    color: #ffffff;
+    padding: 15px 0;
+    border-bottom: 1px solid #34495e;
+    font-size: 1.2em;
+    font-weight: bold;
 }
 
+.mobile-nav a:last-of-type {
+    border-bottom: none;
+}
+
+.mobile-nav .auth-button {
+    margin-top: 20px;
+    justify-content: center;
+    padding: 12px;
+}
+
+.desktop-auth { display: flex; }
+.mobile-auth { display: none; }
+
+
+/* --- Media Queries --- */
+
+/* Medium Devices (Tablets, etc.) */
 @media (max-width: 992px) {
-    .header {
-        padding: 15px 20px;
+    .nav {
+        margin: 0 15px;
+        justify-content: space-around;
     }
-    
-    .header h1 {
-        font-size: clamp(1.8rem, 4vw, 2.5rem);
+    .nav a {
+        margin: 5px 10px;
     }
-    
-    .hero h2 {
-        font-size: clamp(2rem, 5vw, 3.5rem);
-    }
-    
-    .hero p {
-        font-size: clamp(1rem, 2.5vw, 1.4rem);
-    }
-    
+
     .scroll-container {
+        display: grid;
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         gap: 15px;
-    }
-}
-
-/* Mobile Responsive 2-Column Grid Layout */
-@media (max-width: 768px) {
-   /* Mobile Menu */
-  .mobile-menu-toggle {
-            display: block;    
-}
-  
-   .nav {
-       display: none;
-           }
-    
-    .header {
-                flex-direction: row;
-               justify-content: space-between;
-       align-items: center;
-               padding: 10px 20px;
-                 }  
-   .header h1 {
-        margin-right: 0;
-        margin-bottom: 0;
-        font-size: 20px;        text-align: center;
-        flex: 1;
-           }
-        .header-icons {
-       gap: 10px;
-        flex-shrink: 0;
-    }
-    
-    .header-icons .auth-button {
-        padding: 6px 12px;
-        font-size: 18px;
-    }
-    
-    .hero {
-                padding: 30px 15px;
-        margin: 0 5px 30px 5px;
-        text-align: center;
-    }
-    
-    .hero h2 {
-                font-size: 19px;
-        line-height: 1.3;
-        margin-bottom: 15px;
-    }
-    
-    .hero p {
-        font-size: 1.1rem;
-        max-width: 100%;
-        margin-bottom: 25px;
-        color: #34495e;
-    }
-    
-    .search-bar {
-        margin: 20px 10px;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 12px;
-    }
-    
-    .search-bar input {
-        width: 100%;
-        max-width: none;
-        margin-bottom: 0;
-        font-size: 1.1em;
-        padding: 14px;
-    }
-        .search-bar button {
-        width: 100%;
-        margin-top: 0;
-        padding: 14px;
-        font-size: 1.1em;
-    }
-    
-    .category-section {
-        margin: 20px 10px;
-        padding: 15px;
-    }
-    
-    .category-section h3 {
-        font-size: clamp(1.6rem, 5vw, 2.4rem);       text-align: left;
-        margin-left: 5px;
-        margin-bottom: 20px;
-        color: #2c3e50;
-    }
-    
-    /* Mobile 2-column grid layout for products */
-    .category-section .scroll-container {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-        overflow-x: visible;
+        overflow-x: hidden;
         padding-bottom: 0;
-        padding: 0 5px;
     }
-        .category-section .card {
-     min-width: auto;
-        padding: 12px;
-        text-align: center;
-        border-radius: 10px;
-        margin-bottom: 0;
-    }
-    
-    .category-section .card img {
-        max-height: 120px;
-        border-radius: 8px;
-        margin-bottom: 8px;
-    }
-    
-    .category-section .card p {
-        font-size: 0.9em;
-        margin: 8px 0 4px 0;
-        color: #2c3e50;
-        line-height: 1.3;
-    }
-    
-    .category-section .card .price {
-        font-size: 1em;
-        font-weight: 700;
-        margin-top: 4px;
-        color: #16a085;
-    }
-    
-    .category-section .card button {
-        width: 100%;
-        padding: 10px 8px;
-        font-size: 0.9em;
-        border-radius: 6px;
-        margin-top: 8px;
-    }
-    
-    .category-section .more-button {
-        width: 100%;
-        max-width: 280px;
-        padding: 14px;
-        font-size: 1.1em;
-        border-radius: 8px;
-        margin: 25px auto 15px auto;
-    }
-}
 
-@media (max-width: 480px) {
-    .category-section .scroll-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
-        .category-section .card {
-        padding: 10px;
-    }
-   
-    .category-section .card img {
-        max-height: 100px;
-    }
-    
-    .category-section .card p {
-                font-size: 0.85em;
- }
-    
-    .category-section .card .price {
-        font-size: 0.9em;
-    }
-    
-    .category-section .card button {
-        padding: 8px 6px;
-        font-size: 0.85em;
-    }
-    
-}
-
-@media (max-width: 360px) {
-    .category-section .scroll-container {
-        grid-template-columns: 1fr;
-        gap: 12px;
-        padding: 0 3px;
-    }
-    
-    .category-section .card {
-        padding: 10px;
-    }
-}
-
-@media (max-width: 480px) {
-    .scroll-container {
-        gap: 10px !important;
-        padding: 0 3px;
-    }
-    
     .card {
-        padding: 10px;
+        min-width: unset;
     }
-    
-    .card img {
-        max-height: 100px;
-    }
-    
-    .card p {
-        font-size: 0.85em;
-    }
-    
-    .card .price {
-        font-size: 0.9em;
-    }
-    
-    
+}
 
-@media (max-width: 576px) {
+/* Small Devices (Landscape Phones, etc.) */
+@media (max-width: 768px) {
+    :root {
+      --header-height: 60px;
+    }
+
+    /* --- Mobile Header --- */
     .header {
-        padding: 12px 15px;
+        padding: 0 15px;
     }
-    
-    .header h1 {
-        font-size: 1rem;
-    }
-    
-    .header-icons {
-        gap: 5px;
-    }
-    
-    .header-icons .icon-link {
-        font-size: 1.3em;
-    }
-    
-    .header-icons .auth-button {
-        padding: 6px 10px;
-        font-size: 0.8em;
-    }
-    
-    .hero {
-        padding: 40px 15px;
-    }
-    
-    .hero h2 {
-        font-size: 1.8rem;
-    }
-    
-    .hero p {
-        font-size: 1rem;
-    }
-    
-    .cta-button {
-        padding: 12px 30px;
-        font-size: 1em;
-    }
-    
-    .category-section {
-        margin: 15px 5px;
-        padding: 15px;
-    }
-    
-    .card {
-        padding: 12px;
-    }
-    
-    .card img {
-        max-height: 180px;
-    }
-    
-    .card p {
-        font-size: 1em;
-    }
-    
-    .card .price {
-        font-size: 1.1em;
-    }
-}
-
-@media (max-width: 400px) {
-    .header h1 {
-        font-size: 1.3rem;
-    }
-    
-    .header-icons .auth-button span {
-        display: none;
-    }
-    
-    .hero {
-        padding: 30px 10px;
-    }
-    
-    .hero h2 {
+    .header-title {
+        flex: 1;
+        text-align: center;
+        margin: 0;
         font-size: 1.5rem;
     }
-    
+    .desktop-auth { display: none; }
+    .mobile-menu-toggle { display: block; }
+    .nav { display: none; }
+    .mobile-nav { display: flex; }
+    .mobile-auth { display: flex; }
+
+
+    .search-bar {
+        flex-direction: column;
+        margin: 20px 15px;
+    }
+
+    .category-section {
+        margin: 30px 15px;
+        padding: 20px 15px;
+    }
     .category-section h3 {
+        text-align: left;
+        margin-left: 5px;
+    }
+
+    .scroll-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    .card img {
+        height: 150px;
+    }
+    .card p {
+        font-size: 1em;
+    }
+
+    .discount-grid {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+/* Extra Small Devices (Portrait Phones) */
+@media (max-width: 480px) {
+    .header-title {
+        font-size: 1.25rem;
+    }
+    .header-icons .icon-link {
         font-size: 1.3rem;
     }
-}
-
-/* Touch-friendly improvements */
-@media (hover: none) and (pointer: coarse) {
-    .card:hover {
-        transform: none;
+    .discount-hero, .category-section {
+        margin-left: 10px;
+        margin-right: 10px;
     }
-    
-    .cta-button:hover,
-    .more-button:hover,
-    .card button:hover {
-        transform: none;
+    .discount-grid, .scroll-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
-    
-    .nav a:hover {
-        transform: none;
+    .card img, .discount-card img {
+      height: 200px;
     }
-}
-
-/* Landscape orientation adjustments */
-@media (max-height: 600px) and (orientation: landscape) {
-    .hero {
-        padding: 30px 20px;
-    }
-    
-    .hero h2 {
-        font-size: 1.8rem;
-    }
-    
-    .hero p {
-        font-size: 1rem;
-        margin-bottom: 20px;
-    }
-    
 }
